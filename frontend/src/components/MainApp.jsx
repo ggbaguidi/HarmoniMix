@@ -58,7 +58,7 @@ function MainApp({
         </div>
 
         {/* webcam and list */}
-        <h2 className="mt-5">Songs based on your mood</h2>
+        <h2 className="mt-5">Songs based on your mood !!!</h2>
         <div className="d-flex justify-content-between mt-3 w-100">
           {/* list */}
           <div className="list">
@@ -78,7 +78,7 @@ function MainApp({
           {/* webcam */}
           <div id="cam-div">
             <Webcam className="webcam" ref={webCamera} mirrored={true} />
-            <button onClick={() => fetchMusic()}>Moodify</button>
+            <button onClick={() => fetchMusic()}>HarmoniMix</button>
           </div>
 
           {/* mood indicator */}
