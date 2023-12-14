@@ -1,0 +1,22 @@
+h2 {
+    width: fit-content;
+    text-orientation: sideways;
+    display: inline-block;
+    margin: 30px;
+}
+
+.selected {
+    color: white;
+}
+
+.unselected {
+    color:gray;
+}
+
+.unselected:hover{
+    color:white;
+}
+
+.containerTopNavBar {
+    display: inline-block;
+}

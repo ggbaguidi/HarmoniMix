@@ -1,0 +1,12 @@
+body {
+    color: white;
+}
+
+.textField {
+    background-color: darkgray;
+    color: black;
+}
+
+#submit {
+    height: 50px;
+}

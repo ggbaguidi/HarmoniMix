@@ -1,0 +1,17 @@
+.searchBar {
+    width: 200px;
+    height: 30px;
+    text-align: left;
+    font-size: medium;
+    position: absolute;
+    left: 100px;
+}
+
+.textField {
+    background-color: darkgray;
+    color: black;
+}
+
+#search {
+    height: 45px;
+}
