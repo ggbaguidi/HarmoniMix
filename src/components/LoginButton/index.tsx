@@ -4,8 +4,8 @@ import './style.css';
 
 
 const LoginButton = () => {
-    const MY_WEBSITE: string = "http://localhost:3000/callback"
-    const REDIRECT_URL: string = `https://accounts.spotify.com/authorize?client_id=ac81ea031e2e46cabf29f5b89f5ca371&response_type=token&redirect_uri=${MY_WEBSITE}&scope=playlist-modify-private`
+    const MY_WEBSITE: string = "https://harmonimix.netlify.app/callback";
+    const REDIRECT_URL: string = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${MY_WEBSITE}&scope=playlist-modify-private`
 
     return (
         <a href={REDIRECT_URL}>
