@@ -29,11 +29,14 @@ HarmoniMix is a web-based music recommendation platform that leverages a dynamic
 
 ## Screenshots
 
-![Screenshot 1](./assets/Capture%20d'écran%202023-12-02%20122436.png)
+![Screenshot 1](./assets/home-1.png)
 *Caption for Screenshot 1*
 
-![Screenshot 2](./assets/Capture%20d'écran%202023-12-02%20123727.png)
+![Screenshot 2](./assets/search.png)
 *Caption for Screenshot 2*
+
+![Screenshot 3](./assets/recommendation.png)
+*Caption for Screenshot 3*
 
 ...
 
