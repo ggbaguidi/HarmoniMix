@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+}
+
+.container {
+    height: 650px;
+    background-image: url('../assets/img/background.jpg');
+    background-repeat:initial;
+    background-size: auto;
+}
+
+.topNav {
+    display: inline;
+}
+
+.selectStyle {
+    background-color: darkgray;
+    color: black;
+}
