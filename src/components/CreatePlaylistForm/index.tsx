@@ -6,66 +6,78 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, TextField } from '@material-ui/core';
 
+// Define the Props type for the component
 type Props = {
     userId: string,
     selectedTracks: Array<string>
 }
 
-const CreatePlaylistForm = ({userId,selectedTracks}: Props) => {
-
+// CreatePlaylistForm component function
+const CreatePlaylistForm = ({userId, selectedTracks}: Props) => {
+    // Get the access token from the Redux state
     const {accessTokenBearer} = useSelector((state: any) => state.token)
 
-    const [title,setTitle] = useState("");
-    const [description,setDescription] = useState("");
+    // State hooks for handling title and description input
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
+    // Function to handle form submission
     const handleSubmit = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
-        if (title.length<10 || description.length<20){
+        // Validate title and description length
+        if (title.length < 10 || description.length < 20) {
             alert("Title must be minimum 10 characters\nDescription must be minimum 20 characters!")
         } else {
             try {
+                // Spotify API endpoint for creating a playlist
                 const endpoint: string = `https://api.spotify.com/v1/users/${userId}/playlists`;
-                const response: AxiosResponse<any> = await axios.post(endpoint,{
+                // Make a POST request to create the playlist
+                const response: AxiosResponse<any> = await axios.post(endpoint, {
                     name: title,
                     description: description,
                     collaborative: false,
                     public: false
-                },{
+                }, {
                     headers: {
                         'Authorization': accessTokenBearer,
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
                 })
+                // Get the playlist ID from the response
                 const id: string = response.data.id;
+                // Add selected tracks to the created playlist
                 await axios({
                     method: 'post',
                     url: `https://api.spotify.com/v1/playlists/${id}/tracks`,
                     data: {
-                      uris: selectedTracks
+                        uris: selectedTracks
                     },
                     headers: {
-                      'Authorization': accessTokenBearer,
-                      "Accept": "application/json",
-                      "Content-Type": "application/json"
+                        'Authorization': accessTokenBearer,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     }
-                  }).then(()=>{
-                      alert(`Succesfully created ${title} playlist!`)
-                  })
-            } catch(error){
+                }).then(() => {
+                    alert(`Successfully created ${title} playlist!`)
+                })
+            } catch (error) {
                 console.error(error);
             }
         }
     }
-        
 
+    // Function to handle title input change
     const handleTitle = (e: React.ChangeEvent<any>) => {
         setTitle(e.target.value);
     }
 
+    // Function to handle description input change
     const handleDescription = (e: React.ChangeEvent<any>) => {
         setDescription(e.target.value);
     }
+
+    // Render the form with Material-UI components
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -77,9 +89,11 @@ const CreatePlaylistForm = ({userId,selectedTracks}: Props) => {
     );
 }
 
-export default CreatePlaylistForm;
-
+// Prop type validation for CreatePlaylistForm component
 CreatePlaylistForm.propTypes = {
     userId: PropTypes.string,
     selectedTracks: PropTypes.array,
 }
+
+// Export the CreatePlaylistForm component for use in other files
+export default CreatePlaylistForm;
